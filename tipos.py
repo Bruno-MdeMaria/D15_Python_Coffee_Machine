@@ -31,3 +31,21 @@ resources = {
 }
 
 escolha = input("What would you like? (espresso/latte/cappuccino): ").lower()
+
+bebida = MENU[escolha]
+print(bebida)
+print(bebida.get("ingredients"))
+
+def produzir_bebida(bebida,resources):
+    for item in bebida.get("ingredients"):
+        resources["item"] -= bebida["item"]
+
+
+produzir_bebida(bebida,resources)
+
+print(resources)
+
+
+#def verificar(tipo):
+
+
