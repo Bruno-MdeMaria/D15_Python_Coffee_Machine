@@ -36,12 +36,12 @@ bebida = MENU[escolha]
 print(bebida)
 print(bebida.get("ingredients"))
 
-def produzir_bebida(bebida,resources):
-    for item in bebida.get("ingredients"):
-        resources["item"] -= bebida["item"]
+def produzir_bebida(ordem_ingredientes):
+    for item in ordem_ingredientes:
+        resources[item] -= ordem_ingredientes[item]
 
 
-produzir_bebida(bebida,resources)
+produzir_bebida(ordem_ingredientes=bebida["ingredients"])
 
 print(resources)
 
