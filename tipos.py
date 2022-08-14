@@ -38,16 +38,24 @@ def recursos_suf (receita):
             return False
         return True
 
+
+def conferir_moedas(bebida, valor_inserido):
+        troco = valor_inserido - bebida["cost"]
+        return troco
+
+
 def produzir_bebida(receita):
     for item in receita:
         resources[item] -= receita[item]
+        
 
-def solicitar_valor():
-    print("Por favor insira as moedas")
-    total = input("Quantos quarters?: ")*0.25
+def processar_moedas():
+    print("Por favor insira as moedas:")
+    total = int(input("Quantos quarters?: "))*0.25
     total += int(input("Quantos dimes?: "))* 0.10
-    input("Quantos nickles?: ")*0.05
-    input("Quantos pennies?: ")*0.01
+    total += int(input("Quantos nickles?: "))*0.05
+    total += int(input("Quantos pennies?: "))*0.01
+    return total
 
 escolha = input("What would you like? (espresso/latte/cappuccino): ").lower()
 
@@ -58,16 +66,15 @@ print(bebida.get("ingredients"))
 recursos_ok = recursos_suf(receita=bebida["ingredients"])
 print(recursos_ok)
 if recursos_ok == True:
-    input("Por favor insira as moedas")
-    produzir_bebida(receita=bebida["ingredients"])
+        produzir_bebida(receita=bebida["ingredients"])
 
-
-
+valor_inserido = processar_moedas()
+print(valor_inserido)
 print(resources)
 
 
 
 
-#def verificar(tipo):
+
 
 
