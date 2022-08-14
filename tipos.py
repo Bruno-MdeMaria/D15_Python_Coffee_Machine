@@ -30,20 +30,33 @@ resources = {
     "coffee": 100,
 }
 
+
+def recursos_suf (receita):
+    for ingred in receita:
+        if receita[ingred] > resources[ingred]:
+            print(f"Desculpe não há {ingred} suficiente.")
+            return False
+        return True
+
+def produzir_bebida(receita):
+    for item in receita:
+        resources[item] -= receita[item]
+
+
 escolha = input("What would you like? (espresso/latte/cappuccino): ").lower()
 
 bebida = MENU[escolha]
 print(bebida)
 print(bebida.get("ingredients"))
 
-def produzir_bebida(ordem_ingredientes):
-    for item in ordem_ingredientes:
-        resources[item] -= ordem_ingredientes[item]
-
-
-produzir_bebida(ordem_ingredientes=bebida["ingredients"])
+recursos_ok = recursos_suf(receita=bebida["ingredients"])
+print(recursos_ok)
+if recursos_ok == True:
+    produzir_bebida(receita=bebida["ingredients"])
 
 print(resources)
+
+
 
 
 #def verificar(tipo):
