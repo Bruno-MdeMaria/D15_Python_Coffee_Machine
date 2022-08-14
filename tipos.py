@@ -42,6 +42,12 @@ def produzir_bebida(receita):
     for item in receita:
         resources[item] -= receita[item]
 
+def solicitar_valor():
+    print("Por favor insira as moedas")
+    total = input("Quantos quarters?: ")
+    total += int(input("Quantos dimes?: "))* 0.10
+    input("Quantos nickles?: ")
+    input("Quantos pennies?: ")
 
 escolha = input("What would you like? (espresso/latte/cappuccino): ").lower()
 
@@ -52,7 +58,10 @@ print(bebida.get("ingredients"))
 recursos_ok = recursos_suf(receita=bebida["ingredients"])
 print(recursos_ok)
 if recursos_ok == True:
+    input("Por favor insira as moedas")
     produzir_bebida(receita=bebida["ingredients"])
+
+
 
 print(resources)
 
