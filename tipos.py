@@ -44,10 +44,10 @@ def produzir_bebida(receita):
 
 def solicitar_valor():
     print("Por favor insira as moedas")
-    total = input("Quantos quarters?: ")
+    total = input("Quantos quarters?: ")*0.25
     total += int(input("Quantos dimes?: "))* 0.10
-    input("Quantos nickles?: ")
-    input("Quantos pennies?: ")
+    input("Quantos nickles?: ")*0.05
+    input("Quantos pennies?: ")*0.01
 
 escolha = input("What would you like? (espresso/latte/cappuccino): ").lower()
 
