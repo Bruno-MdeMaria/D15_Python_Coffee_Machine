@@ -37,7 +37,8 @@ resources = {
 def recursos_suf (receita):
     for ingred in receita:
         if receita[ingred] > resources[ingred]:
-            print(f"Desculpe não há {ingred} suficiente.")
+            os.system("cls")  
+            print(f"Sorry there is not enough {ingred}.")
             return False
         return True
 
@@ -53,11 +54,11 @@ def produzir_bebida(receita):
         
 
 def processar_moedas():
-    print("Por favor insira as moedas:")
-    total = int(input("Quantos quarters?: "))*0.25
-    total += int(input("Quantos dimes?: "))* 0.10
-    total += int(input("Quantos nickles?: "))*0.05
-    total += int(input("Quantos pennies?: "))*0.01
+    print("Please insert coins.")
+    total = int(input("How many quarters?: "))*0.25
+    total += int(input("How many dimes?: "))* 0.10
+    total += int(input("How many nickles?: "))*0.05
+    total += int(input("How many pennies?: "))*0.01
     return round(total,2)
 
 caixa = 0
@@ -74,21 +75,25 @@ while maquina_on:
         print(f"Money: ${caixa:.2f}")
     else:
           bebida = MENU[escolha]
-          print(bebida)
-          print(bebida.get("ingredients"))
+          #print(bebida) TEMP
+          #print(bebida.get("ingredients")) TEMP
 
           recursos_ok = recursos_suf(receita=bebida["ingredients"])
 
-          print(recursos_ok)
+          #print(recursos_ok) TEMP
           if recursos_ok == True:             
             valor_inserido = processar_moedas()
             troco = round(conferir_moedas(bebida, valor_inserido),2)
             if troco >= 0:
                 caixa += bebida["cost"]
                 produzir_bebida(receita=bebida["ingredients"])
+                os.system("cls") 
                 print(f"Here is ${troco} in change.\nHere is your latte ☕️. Enjoy!")
-            else: 
-                print("Desculpe, não há dinheiro suficiente.\nDinheiro reembolsado")  
+                
+            else:
+                os.system("cls")   
+                print("Sorry that's not enough money.\nMoney refunded.")
+                
           
            
                   
