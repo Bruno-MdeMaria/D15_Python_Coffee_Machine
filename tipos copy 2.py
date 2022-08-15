@@ -80,17 +80,18 @@ while maquina_on:
           recursos_ok = recursos_suf(receita=bebida["ingredients"])
 
           print(recursos_ok)
-          if recursos_ok == True:
-                valor_inserido = processar_moedas()
-                troco = round(conferir_moedas(bebida, valor_inserido),2)
-          else: maquina_on = False
-          if troco >= 0:
-            caixa += bebida["cost"]
-            produzir_bebida(receita=bebida["ingredients"])
-            print(f"Here is ${troco} in change.\nHere is your latte ☕️. Enjoy!")
-          else: 
-            print("Desculpe, não há dinheiro suficiente.\nDinheiro reembolsado")
-            maquina_on = False       
+          if recursos_ok == True:             
+            valor_inserido = processar_moedas()
+            troco = round(conferir_moedas(bebida, valor_inserido),2)
+            if troco >= 0:
+                caixa += bebida["cost"]
+                produzir_bebida(receita=bebida["ingredients"])
+                print(f"Here is ${troco} in change.\nHere is your latte ☕️. Enjoy!")
+            else: 
+                print("Desculpe, não há dinheiro suficiente.\nDinheiro reembolsado")  
+          
+           
+                  
 
 
 
