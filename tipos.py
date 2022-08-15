@@ -57,6 +57,8 @@ def processar_moedas():
     total += int(input("Quantos pennies?: "))*0.01
     return total
 
+
+
 escolha = input("What would you like? (espresso/latte/cappuccino): ").lower()
 
 bebida = MENU[escolha]
@@ -64,11 +66,16 @@ print(bebida)
 print(bebida.get("ingredients"))
 
 recursos_ok = recursos_suf(receita=bebida["ingredients"])
+
 print(recursos_ok)
 if recursos_ok == True:
-        produzir_bebida(receita=bebida["ingredients"])
+        valor_inserido = processar_moedas()
+        troco = round(conferir_moedas(bebida, valor_inserido),2)
+if troco >= 0:
+    produzir_bebida(receita=bebida["ingredients"])
+    print(f"Here is ${troco} in change.\nHere is your latte ☕️. Enjoy!")
+else: print("Desculpe, não há dinheiro suficiente.\nDinheiro reembolsado")       
 
-valor_inserido = processar_moedas()
 print(valor_inserido)
 print(resources)
 
