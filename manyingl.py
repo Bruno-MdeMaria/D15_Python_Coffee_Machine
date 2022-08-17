@@ -54,6 +54,7 @@ def produzir_bebida(receita):
         
 
 def processar_moedas():
+    
     print("Please insert coins.")
     total = int(input("How many quarters?: "))*0.25
     total += int(input("How many dimes?: "))* 0.10
